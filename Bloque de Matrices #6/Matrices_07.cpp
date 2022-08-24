@@ -1,2 +1,14 @@
-/* Desarrollar un programa que determine si una matriz es simétrica o no. Una matriz es simétrica si es cuadrada y si es igual a su matriz
+/* Desarrollar un programa que determine si una matriz es simï¿½trica o no. Una matriz es simï¿½trica si es cuadrada y si es igual a su matriz
 traspuesta */
+
+#include <iostream>
+#include<conio.h>
+
+using namespace std;
+
+int main()
+{
+    cout<<"Funciona en vs code";
+    getch();
+    return 0;
+}
