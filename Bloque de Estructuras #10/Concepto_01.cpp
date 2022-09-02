@@ -1,4 +1,4 @@
-//Estructura básica en C++
+//Estructura bï¿½sica en C++
 
 #include<iostream>
 #include<conio.h>
