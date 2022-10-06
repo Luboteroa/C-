@@ -10,17 +10,19 @@ using namespace std;
 
 struct Nodo
 {
-	int dato;
+	float dato;
 	Nodo *siguiente;	
 };
 
 //Prototipo de funciones
-void InsertarLista(Nodo *&, int);
+void InsertarLista(Nodo *&, float);
 void MostrarLista(Nodo *);
-void BuscarLista(Nodo *, int);
-void EliminarNodo(Nodo *&, int);
-void EliminarLista(Nodo *&, int &);
+void BuscarLista(Nodo *, float);
+void EliminarNodo(Nodo *&, float);
+void EliminarLista(Nodo *&, float &);
 void CalcularMayorOMenor(Nodo *);
+void PromedioNumeros(Nodo *);
+
 void Menu();
 
 Nodo *lista = NULL;
@@ -32,7 +34,7 @@ int main()
 	return 0;
 }
 
-void InsertarLista(Nodo *&lista, int n)
+void InsertarLista(Nodo *&lista, float n)
 {
 	Nodo *nuevo_nodo = new Nodo();
 	nuevo_nodo->dato = n;
@@ -78,7 +80,7 @@ void MostrarLista(Nodo *lista)
 	}
 }
 
-void BuscarLista(Nodo *lista, int n)
+void BuscarLista(Nodo *lista, float n)
 {
 	bool band = false;
 	
@@ -102,7 +104,7 @@ void BuscarLista(Nodo *lista, int n)
 	cout<<"\nElemento "<<n<<" NO ha sido encontrado en la lista."<<endl;
 }
 
-void EliminarNodo(Nodo *&lista, int n)
+void EliminarNodo(Nodo *&lista, float n)
 {
 	if(lista == NULL){ return; }
 	
@@ -134,7 +136,7 @@ void EliminarNodo(Nodo *&lista, int n)
 	}
 }
 
-void EliminarLista(Nodo *&lista, int &n)
+void EliminarLista(Nodo *&lista, float &n)
 {
 	Nodo *aux = lista;
 	n = aux->dato;
@@ -149,7 +151,7 @@ void CalcularMayorOMenor(Nodo *lista)
 		cout<<"Lista vacia, por favor inserte datos nuevos.\n";
 		return;
 	}
-	int mayor = -999999, menor = mayor*-1;
+	float mayor = -999999, menor = mayor*-1;
 	
 	Nodo *actual = new Nodo();
 	actual = lista;
@@ -170,22 +172,42 @@ void CalcularMayorOMenor(Nodo *lista)
 	cout<<"El elemento MENOR de la lista es: "<<menor<<". Y el elemento MAYOR es: "<<mayor<<".\n\n";
 }
 
+void PromedioNumeros(Nodo *)
+{
+	float promedio = 0, n=0;
+	
+	Nodo *actual = new Nodo();
+	actual = lista;
+	
+	while(actual != NULL)
+	{
+		n++;
+		promedio += actual->dato;
+		actual = actual->siguiente;
+	}
+	promedio /= n;
+	
+	cout<<"El promedio de los numeros en la lista fue: "<<promedio<<endl<<endl;
+}
+
 void Menu()
 {
-	int opcion, dato;
-	const int opcionSalir = 7;
+	int opcion;
+	float dato;
+	const int opcionSalir = 0;
 	
 	do
 	{
-		cout<<"\t. :MENU: .\n";
+		cout<<"\t. :MENU: .\n\n";
 		cout<<"1. Insertar elementos a la lista\n";
 		cout<<"2. Mostrar los elementos de la lista\n";
 		cout<<"3. Buscar numero lista\n";
 		cout<<"4. Eliminar elemento de una lista\n";
 		cout<<"5. Eliminar lista\n";
 		cout<<"6. Calcular numero mayor y menor de la lista\n";
-		cout<<"7. Salir\n";
-		cout<<"Opcion: "; cin>>opcion;
+		cout<<"7. Sacar promedio de los numeros de la lista\n";
+		cout<<"0. Salir\n";
+		cout<<"\nOpcion: "; cin>>opcion;
 		
 		switch(opcion)
 		{
@@ -232,6 +254,10 @@ void Menu()
 				
 			case 6:
 				CalcularMayorOMenor(lista);
+				break;
+				
+			case 7:
+				PromedioNumeros(lista);
 				break;
 			
 			case opcionSalir:
