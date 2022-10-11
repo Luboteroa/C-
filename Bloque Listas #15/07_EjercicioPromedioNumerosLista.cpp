@@ -262,6 +262,7 @@ void Menu()
 			
 			case opcionSalir:
 				cout<<"\nSaliendo..."<<endl<<endl;
+				break;
 				
 			default:
 				cout<<"\nOpcion no valida, ingrese nuevamente."<<endl;
