@@ -20,8 +20,6 @@ void AddText();
 void LeerArchivo();
 void CerrarArchivo();
 
-void Frases(string);
-
 ofstream archivo; 
 ifstream archivoLeer;
 
